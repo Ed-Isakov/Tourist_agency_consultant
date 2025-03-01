@@ -100,8 +100,8 @@ flowchart LR
     server --> rag_model
     server --> postgresql_db
 ```
-ТГ бот на aiogram
-БД На postgresql
+ТГ бот на aiogram  
+БД На postgresql  
 TODO:  
 1. разобраться с деплоем сервиса на севрере  
 2. Разобраться с подключением к БД (и нужна ли она, и postgre ли нужна)  
