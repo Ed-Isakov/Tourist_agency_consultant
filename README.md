@@ -92,7 +92,11 @@ flowchart LR
 
     subgraph backend
         server["server"]
+        rag_model["RAG model"]
+        postgresql_db[("postgreSQL DB")]
     end
 
     tg_bot --> server
+    server --> rag_model
+    server --> postgresql_db
 ```
