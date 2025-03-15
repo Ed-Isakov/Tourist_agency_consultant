@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+
+  faiss:
+    build:
+      context: faiss
+      dockerfile: Dockerfile
+    container_name: faiss
+    ports:
+      - "5001:5000"
