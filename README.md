@@ -85,24 +85,36 @@
 
 Схемка:
 ```mermaid
+
 flowchart LR
     subgraph User Interface
         tg_bot["bot in TG"]
     end
 
-    subgraph backend
-        server["server"]
-        rag_model["RAG model"]
-        postgresql_db[("postgreSQL DB")]
+    subgraph external_services
+        tavily_search["tavily search"]
+        gigachat["gigachat"]
     end
 
-    tg_bot --> server
-    server --> rag_model
-    server --> postgresql_db
+    subgraph backend
+        communication_server["communication-service"]
+        postgresql_db[("communications DB")]
+        ml_server["ml-server"]
+        faiss[("FAISS")]
+    end
+
+    tg_bot -->|user requests| communication_server
+    communication_server --> ml_server
+    ml_server -->|search similar text request| faiss
+
+    ml_server --------> tavily_search
+    ml_server --> gigachat
+    communication_server -->|store user feedback| postgresql_db
+
 ```
 ТГ бот на aiogram  
 БД На postgresql  
 TODO:  
-1. разобраться с деплоем сервиса на севрере  
+1. разобраться с деплоем сервиса на севрере +
 2. Разобраться с подключением к БД (и нужна ли она, и postgre ли нужна)  
 3. Разобраться с токеном ТГ бота (как прокинуть на сервер, чтобы не украли)
