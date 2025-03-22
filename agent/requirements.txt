@@ -3,3 +3,5 @@ langchain==0.3.18
 langchain-community==0.3.17
 langchain-gigachat==0.3.4
 langgraph==0.2.74
+fastapi==0.115.11
+uvicorn==0.34.0
