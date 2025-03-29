@@ -103,9 +103,19 @@ flowchart LR
     communication_server -->|store user feedback| postgresql_db
 
 ```
+#### Команда для подключения к БД
+```
+psql "host=rc1a-tovlljfgcws5wj5h.mdb.yandexcloud.net,rc1b-2ijpl1ta0ep3wk3a.mdb.yandexcloud.net \
+    port=6432 \
+    sslmode=verify-full \
+    dbname=communications \
+    user=mirea_team \
+    target_session_attrs=read-write"
+```
+
 ТГ бот на aiogram  
 БД На postgresql  
 TODO:  
 1. разобраться с деплоем сервиса на севрере +
-2. Разобраться с подключением к БД (и нужна ли она, и postgre ли нужна)  
+2. Разобраться с подключением к БД (и нужна ли она, и postgre ли нужна)  +
 3. Разобраться с токеном ТГ бота (как прокинуть на сервер, чтобы не украли)
