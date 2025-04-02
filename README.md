@@ -98,7 +98,7 @@ flowchart LR
     communication_server --> ml_server
     ml_server -->|search similar text request| faiss
 
-    ml_server --------> tavily_search
+    ml_server ----> tavily_search
     ml_server --> gigachat
     communication_server -->|store user feedback| postgresql_db
 
