@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langchain_gigachat import GigaChat
 from langgraph.graph import StateGraph, MessagesState
+from langchain.tools import BaseTool
 from langgraph.constants import START
 from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_community.tools.tavily_search import TavilySearchResults
@@ -9,6 +10,11 @@ from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.messages import SystemMessage, HumanMessage
 from dotenv import load_dotenv
 import os
+
+from agent.prompts import sys_prompt
+from utils import print_messages
+
+from pydantic.v1 import Field
 
 load_dotenv()
 
@@ -23,7 +29,7 @@ class LangGraphAgent:
             temperature=0.1
         )
 
-        self.tools = [TavilySearchResults(max_results=5)]
+        self.tools = [TavilySearchResults(max_results=5, description="Используй этот инструмент когда нужно найти что-то в интернете")]
         self.llm_with_tools = self.llm.bind_tools(self.tools)
 
         class State(MessagesState):
@@ -43,11 +49,10 @@ class LangGraphAgent:
     def assistant(self, state):
         return {
             "messages": [
-                self.llm_with_tools.invoke([SystemMessage(content="Ваш системный промпт")] + state['messages'])
+                self.llm_with_tools.invoke([SystemMessage(content=sys_prompt)] + state['messages'])
             ],
             "is_reasoning": False
         }
-
 
 class AgentAPI:
     def __init__(self, agent: LangGraphAgent):
@@ -57,7 +62,6 @@ class AgentAPI:
         class Query(BaseModel):
             message: str
             thread_id: str
-
 
         @self.app.post("/query")
         def query_endpoint(query: Query):
@@ -74,11 +78,29 @@ class AgentAPI:
                 raise HTTPException(status_code=500, detail=str(e))
 
 
+
 # Запуск приложения
 if __name__ == "__main__":
-    import uvicorn
+    m = HumanMessage(f'Куда стоит поехать этим летом?')
+
 
     agent = LangGraphAgent()
-    api = AgentAPI(agent)
 
-    uvicorn.run(api.app, host="0.0.0.0", port=8000)
+    for step in agent.graph.stream({"messages": m}, {"configurable": {"thread_id": 1}}):
+        print(step.keys())
+
+        # print("Результат шага:", step)
+
+        print_messages(list(step.values())[0]['messages'])
+
+        print("\n\n################################################################")
+
+    print()
+    import uvicorn
+
+
+
+
+    # api = AgentAPI(agent)
+    #
+    # uvicorn.run(api.app, host="0.0.0.0", port=8000)
