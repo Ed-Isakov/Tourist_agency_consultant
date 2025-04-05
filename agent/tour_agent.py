@@ -11,7 +11,7 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from dotenv import load_dotenv
 import os
 
-from agent.prompts import sys_prompt
+from prompts import sys_prompt
 from utils import print_messages
 
 from pydantic.v1 import Field
