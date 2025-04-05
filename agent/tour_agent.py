@@ -29,7 +29,9 @@ class LangGraphAgent:
             temperature=0.1
         )
 
-        self.tools = [TavilySearchResults(max_results=5, description="Используй этот инструмент когда нужно найти что-то в интернете")]
+        self.tools = [TavilySearchResults(max_results=5,
+                                          description="Используй этот инструмент когда нужно найти что-то в интернете",
+                                          tavily_api_key=os.getenv("TAVILY_API_KEY"))]
         self.llm_with_tools = self.llm.bind_tools(self.tools)
 
         class State(MessagesState):
