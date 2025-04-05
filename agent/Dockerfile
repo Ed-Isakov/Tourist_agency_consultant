@@ -1,3 +1,6 @@
+FROM ubuntu:latest
+LABEL authors="poulyak"
+
 # Используем официальный Python образ
 FROM python:3.9-slim
 
@@ -14,7 +17,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Открываем порт, на котором будет работать FastAPI
-EXPOSE 5000
+EXPOSE 8000
 
 # Запускаем приложение через uvicorn
-CMD ["uvicorn", "faiss_service:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["uvicorn", "tour_agent:api.app", "--host", "0.0.0.0", "--port", "8000"]

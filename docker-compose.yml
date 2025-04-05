@@ -8,4 +8,11 @@ services:
       dockerfile: Dockerfile
     container_name: faiss
     ports:
-      - "5001:5000"
+      - "5000:5000"
+  agent:
+    build:
+      context: agent
+      dockerfile: Dockerfile
+    container_name: agent
+    ports:
+      - "8000:8000"

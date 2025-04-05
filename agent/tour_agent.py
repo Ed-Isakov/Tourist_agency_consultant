@@ -79,12 +79,15 @@ class AgentAPI:
 
 
 
+agent = LangGraphAgent()
+api = AgentAPI(agent)
+
 # Запуск приложения
 if __name__ == "__main__":
     m = HumanMessage(f'Куда стоит поехать этим летом?')
 
 
-    agent = LangGraphAgent()
+
 
     for step in agent.graph.stream({"messages": m}, {"configurable": {"thread_id": 1}}):
         print(step.keys())
@@ -96,11 +99,5 @@ if __name__ == "__main__":
         print("\n\n################################################################")
 
     print()
-    import uvicorn
 
 
-
-
-    # api = AgentAPI(agent)
-    #
-    # uvicorn.run(api.app, host="0.0.0.0", port=8000)
