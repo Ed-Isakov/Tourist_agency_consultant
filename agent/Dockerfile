@@ -15,7 +15,6 @@ RUN pip install -r requirements.txt
 
 # Копируем все файлы в контейнер
 COPY . .
-COPY ../.env .
 
 # Открываем порт, на котором будет работать FastAPI
 EXPOSE 8000
