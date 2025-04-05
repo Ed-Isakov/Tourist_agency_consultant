@@ -90,7 +90,7 @@ flowchart LR
     subgraph backend
         communication_server["communication-service"]
         postgresql_db[("communications DB")]
-        ml_server["ml-server"]
+        ml_server["ml-service"]
         faiss[("FAISS")]
     end
 
