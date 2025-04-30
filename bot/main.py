@@ -8,10 +8,12 @@ from aiogram.utils import executor
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from dotenv import load_dotenv
 from database import Database
+import httpx
 
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
+AGENT_URL = os.getenv("AGENT_URL")
 
 bot = Bot(token=BOT_TOKEN)
 storage = MemoryStorage()
@@ -63,7 +65,23 @@ async def save_feedback(message: types.Message, state: FSMContext):
 
 @dp.message_handler()
 async def handle_message(message: types.Message):
-    await message.answer("Ответ модели", reply_markup=main_kb)
+    payload = {
+        "message": message.text,
+        "thread_id": str(message.from_user.id)
+    }
+    async with httpx.AsyncClient() as client:
+        try:
+            resp = await client.post(AGENT_URL, json=payload, timeout=200.0)
+            resp.raise_for_status()
+            data = resp.json()
+            text = data.get("response", "Агент вернул пустой ответ.")
+        except httpx.RequestError:
+            text = "Не удалось связаться с сервисом агента."
+        except httpx.HTTPStatusError as e:
+            text = f"Ошибка от агента: {e.response.status_code}"
+        except ValueError:
+            text = "Некорректный формат ответа от агента."
+    await message.answer(text, reply_markup=main_kb)
 
 
 if __name__ == "__main__":
