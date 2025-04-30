@@ -16,4 +16,4 @@ COPY . .
 # Открываем порт, на котором будет работать FastAPI
 EXPOSE 5000
 
-CMD ["python", "-u", "bot.py"]
+CMD ["python", "-u", "main.py"]
