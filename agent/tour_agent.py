@@ -72,7 +72,7 @@ class AgentAPI:
                 result = self.agent.graph.invoke(state, {"configurable": {"thread_id": query.thread_id}})
                 if 'messages' in result:
                     response = result['messages'][-1].content
-                    print(result['messages'][-1])
+                    print("TOTAL TOKENS (without search): +-", result['messages'][-1].response_metadata['token_usage']['total_tokens'])
                     return {"response": response}
                 else:
                     raise HTTPException(status_code=500, detail="Ошибка обработки запроса")
