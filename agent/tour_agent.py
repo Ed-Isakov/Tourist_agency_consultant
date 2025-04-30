@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langchain_gigachat import GigaChat
 from langgraph.graph import StateGraph, MessagesState
-from langchain.tools import BaseTool
 from langgraph.constants import START
 from langgraph.prebuilt import ToolNode, tools_condition
 from langchain_community.tools.tavily_search import TavilySearchResults
@@ -78,7 +77,6 @@ class AgentAPI:
                     raise HTTPException(status_code=500, detail="Ошибка обработки запроса")
             except Exception as e:
                 raise HTTPException(status_code=500, detail=str(e))
-
 
 
 agent = LangGraphAgent()

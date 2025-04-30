@@ -16,3 +16,8 @@ services:
     container_name: agent
     ports:
       - "8000:8000"
+  bot:
+    build:
+      context: bot
+      dockerfile: Dockerfile
+    container_name: bot
