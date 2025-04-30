@@ -25,11 +25,11 @@ class LangGraphAgent:
             model="GigaChat-Pro",
             verify_ssl_certs=False,
             profanity_check=False,
-            temperature=0.1
+            temperature=0.3
         )
 
-        self.tools = [TavilySearchResults(max_results=5,
-                                          description="Используй этот инструмент когда нужно найти что-то в интернете",
+        self.tools = [TavilySearchResults(max_results=3,
+                                          description="Искать актуальную информацию в интернете",
                                           tavily_api_key=os.getenv("TAVILY_API_KEY"))]
         self.llm_with_tools = self.llm.bind_tools(self.tools)
 
@@ -72,6 +72,7 @@ class AgentAPI:
                 result = self.agent.graph.invoke(state, {"configurable": {"thread_id": query.thread_id}})
                 if 'messages' in result:
                     response = result['messages'][-1].content
+                    print(result['messages'][-1])
                     return {"response": response}
                 else:
                     raise HTTPException(status_code=500, detail="Ошибка обработки запроса")
