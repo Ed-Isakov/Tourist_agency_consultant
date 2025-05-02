@@ -1,0 +1,102 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{add\_vectors()}\spxextra{in module faiss\_service}, \hyperpage{1}
+  \item \spxentry{AgentAPI}\spxextra{class in tour\_agent}, \hyperpage{2}
+  \item \spxentry{assistant()}\spxextra{tour\_agent.LangGraphAgent method}, \hyperpage{2}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{create\_index()}\spxextra{in module faiss\_service}, \hyperpage{1}
+  \item \spxentry{create\_pool()}\spxextra{database.Database method}, \hyperpage{1}
+  \item \spxentry{CreateIndexRequest}\spxextra{class in faiss\_service}, \hyperpage{1}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{database}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{Database}\spxextra{class in database}, \hyperpage{1}
+  \item \spxentry{dimension}\spxextra{faiss\_service.CreateIndexRequest attribute}, \hyperpage{1}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{faiss\_service}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{feedback\_request()}\spxextra{in module main}, \hyperpage{2}
+  \item \spxentry{FeedbackState}\spxextra{class in main}, \hyperpage{2}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry{handle\_message()}\spxextra{in module main}, \hyperpage{2}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry{k}\spxextra{faiss\_service.SearchQuery attribute}, \hyperpage{1}
+  \item \spxentry{key}\spxextra{faiss\_service.CreateIndexRequest attribute}, \hyperpage{1}
+  \item \spxentry{key}\spxextra{faiss\_service.SearchQuery attribute}, \hyperpage{1}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{LangGraphAgent}\spxextra{class in tour\_agent}, \hyperpage{2}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{main}
+    \subitem \spxentry{module}, \hyperpage{2}
+  \item \spxentry{model\_config}\spxextra{faiss\_service.CreateIndexRequest attribute}, 
+		\hyperpage{1}
+  \item \spxentry{model\_config}\spxextra{faiss\_service.SearchQuery attribute}, \hyperpage{1}
+  \item \spxentry{module}
+    \subitem \spxentry{database}, \hyperpage{1}
+    \subitem \spxentry{faiss\_service}, \hyperpage{1}
+    \subitem \spxentry{main}, \hyperpage{2}
+    \subitem \spxentry{prompts}, \hyperpage{2}
+    \subitem \spxentry{tour\_agent}, \hyperpage{2}
+    \subitem \spxentry{utils}, \hyperpage{2}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{on\_startup()}\spxextra{in module main}, \hyperpage{2}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{print\_messages()}\spxextra{in module utils}, \hyperpage{2}
+  \item \spxentry{prompts}
+    \subitem \spxentry{module}, \hyperpage{2}
+
+  \indexspace
+  \bigletter Q
+  \item \spxentry{query}\spxextra{faiss\_service.SearchQuery attribute}, \hyperpage{1}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{register\_user\_if\_not\_exists()}\spxextra{database.Database method}, 
+		\hyperpage{1}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{save\_feedback()}\spxextra{database.Database method}, \hyperpage{1}
+  \item \spxentry{save\_feedback()}\spxextra{in module main}, \hyperpage{2}
+  \item \spxentry{search()}\spxextra{in module faiss\_service}, \hyperpage{1}
+  \item \spxentry{SearchQuery}\spxextra{class in faiss\_service}, \hyperpage{1}
+  \item \spxentry{start()}\spxextra{in module main}, \hyperpage{2}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{tour\_agent}
+    \subitem \spxentry{module}, \hyperpage{2}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{utils}
+    \subitem \spxentry{module}, \hyperpage{2}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry{waiting\_feedback}\spxextra{main.FeedbackState attribute}, \hyperpage{2}
+
+\end{sphinxtheindex}

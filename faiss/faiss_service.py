@@ -25,7 +25,7 @@ class SearchQuery(BaseModel):
 
 @app.post("/create_index")
 async def create_index(request: CreateIndexRequest):
-    """Создание нового индекса"""
+    """Create new index"""
     if request.key in index_store:
         raise HTTPException(status_code=400, detail=f"Индекс с ключом '{request.key}' уже существует.")
 
@@ -37,7 +37,7 @@ async def create_index(request: CreateIndexRequest):
 
 @app.post("/add_vectors/{key}")
 async def add_vectors(key: str, vectors: List[List[float]]):
-    """Добавление векторов в индекс"""
+    """Add vectors to index"""
     if key not in index_store:
         raise HTTPException(status_code=404, detail=f"Индекс с ключом '{key}' не найден.")
 
@@ -54,7 +54,7 @@ async def add_vectors(key: str, vectors: List[List[float]]):
 
 @app.post("/search")
 async def search(query: SearchQuery):
-    """Поиск ближайших соседей в указанном индексе"""
+    """Find nearest neighbors in the specified index"""
     if query.key not in index_store:
         raise HTTPException(status_code=404, detail=f"Индекс с ключом '{query.key}' не найден.")
 
