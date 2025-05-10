@@ -93,13 +93,6 @@ psql "host=rc1a-tovlljfgcws5wj5h.mdb.yandexcloud.net,rc1b-2ijpl1ta0ep3wk3a.mdb.y
     target_session_attrs=read-write"
 ```
 
-ТГ бот на aiogram  
-БД На postgresql  
-TODO:  
-1. разобраться с деплоем сервиса на севрере +
-2. Разобраться с подключением к БД (и нужна ли она, и postgre ли нужна)  +
-3. Разобраться с токеном ТГ бота (как прокинуть на сервер, чтобы не украли)
-
 
 #### Развертка и запуск проекта
 ```
